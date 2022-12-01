@@ -22,7 +22,7 @@ public class Main {
 
             i = scanner.nextDouble();
 
-            System.out.println("----[Повторный запрос во время обработки запроса] Введенное число: " + i);
+            System.out.println("----[Повторный запрос во время обработки запроса] : Результат - " + i*i);
         }
 
         System.out.println("Выполненная таска: " + submittedTask.get());

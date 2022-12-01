@@ -1,7 +1,7 @@
 package anvarzhonov.ikbo2019.task1;
 
 public class MyArray {
-    public static final int SIZE_ARRAY = 5000;
+    public static final int SIZE_ARRAY = 3000;
     int[] arr = new int[SIZE_ARRAY];
     int sum, index = 0;
 

@@ -6,6 +6,7 @@ import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 
 /**
+ * Прочитать и вывести содержимое файла
  * @author - Anvarzhonov Z.T. IKBO-20-19 on 25.09.2022 - 17:06
  */
 public class Main {
@@ -16,7 +17,6 @@ public class Main {
 
             while (fileChannel.read(byteBuffer) > 0) {
                 byteBuffer.flip();
-                int i = 0;
                 while (byteBuffer.hasRemaining()) {
                     System.out.print((char) byteBuffer.get());
                 }

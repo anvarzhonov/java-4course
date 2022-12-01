@@ -3,7 +3,7 @@ package anvarzhonov.ikbo2019.task1;
 import java.util.concurrent.*;
 
 public class SumElementsByMultithreadingWay implements ArrayOperationService {
-    private static final int NUMBER_OF_THREADS = 10;
+    private static final int NUMBER_OF_THREADS = 2;
 
     @Override
     public int getSumElementsOfArray(MyArray array) throws ExecutionException, InterruptedException {
@@ -13,6 +13,7 @@ public class SumElementsByMultithreadingWay implements ArrayOperationService {
         Callable<Integer> task = () -> {
             synchronized (waitObject) {
                 array.addElementToSum();
+//                Thread.sleep(1);
             }
             return array.sum;
         };

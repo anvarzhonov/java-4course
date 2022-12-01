@@ -21,7 +21,7 @@ public class Main {
         List<CopyingFile> copyFileService = List.of(
             new CopyFileWithFileInputAndOutputStreams(),
             new CopyFileWithFIleChannel(),
-//            new CopyFIleWithApacheCommonsIO(),
+            new CopyFIleWithApacheCommonsIO(),
             new CopyFileWithFilesClassInNIO2()
         );
 
