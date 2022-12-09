@@ -1,0 +1,17 @@
+spring:
+  rsocket:
+    server:
+      port: 7000
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5435/pr7_webflux_db
+    username: anvarzhonov
+    password: anvarzhonov
+
+server:
+  port: 8081

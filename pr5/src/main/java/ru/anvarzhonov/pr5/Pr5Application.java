@@ -13,12 +13,12 @@ public class Pr5Application {
         SpringApplication.run(Pr5Application.class, args);
     }
 
-    @Bean
-    CommandLineRunner init(StorageService storageService) {
-        return (args) -> {
-//            storageService.deleteAll();
-//            storageService.init();
-        };
-    }
+//    @Bean
+//    CommandLineRunner init(StorageService storageService) {
+//        return (args) -> {
+////            storageService.deleteAll();
+////            storageService.init();
+//        };
+//    }
 
 }

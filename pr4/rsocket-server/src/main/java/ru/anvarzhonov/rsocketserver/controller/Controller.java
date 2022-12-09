@@ -1,5 +1,6 @@
 package ru.anvarzhonov.rsocketserver.controller;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,6 +8,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import ru.anvarzhonov.rsocketserver.DTO.Plane;
 import ru.anvarzhonov.rsocketserver.DTO.PlaneRequest;
+import ru.anvarzhonov.rsocketserver.repository.PlaneRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,17 +21,9 @@ import java.util.stream.Collectors;
  */
 @RestController
 @Slf4j
+@RequiredArgsConstructor
 public class Controller {
-    private List<Plane> plans = new ArrayList<>();
-
-    {
-        plans.add(new Plane(1L, "test-1", 2000, "engine-1"));
-        plans.add(new Plane(2L,"test-2", 2100, "engine-2"));
-        plans.add(new Plane(3L,"test-3", 2300, "engine-3"));
-        plans.add(new Plane(4L,"test-4", 2400, "engine-4"));
-        plans.add(new Plane(5L,"test-5", 2500, "engine-5"));
-        plans.add(new Plane(6L,"test-6", 2600, "engine-6"));
-    }
+    private final PlaneRepository repository;
 
     @MessageMapping("request-response")
     Mono<Plane> requestResponse(Mono<Long> id) {
@@ -60,7 +54,7 @@ public class Controller {
     }
 
     private Plane getPlaneWithId(Long id){
-        return plans
+        return repository.findAll()
             .stream()
             .filter(s -> s.getId().equals(id))
             .findAny()
@@ -68,14 +62,14 @@ public class Controller {
     }
 
     private List<Plane> getPlans() {
-        return plans;
+        return repository.findAll();
     }
 
     private Plane savePlane(PlaneRequest r) {
         Plane plane = new Plane(r.getName(),
             r.getCapacityOfPeople(),
             r.getEngineName());
-        plans.add(plane);
-        return plane;
+        Plane save = repository.save(plane);
+        return save;
     }
 }
